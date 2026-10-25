@@ -1,0 +1,156 @@
+{%extends "base.html" %}
+
+{% block title %}Find Your Direction | Career Pathfinder{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+        <div class="announcement d-flex flex-row">
+            <span class="status-dot">YOUR FUTURE STARTS WITH UNDERSTANDING YOURSELF</span>
+        </div>
+        
+        <h1>
+            Your Potential.<br>
+            <span class="gradient-text">Your Direction.</span><br>
+            Your Future.
+        </h1>
+
+        <p class="hero-description">
+            Unsure what to pursue? Discover your strengths, explore
+            career possibilities, and get a personalized roadmap
+            designed around your goals and available time.
+        </p>
+
+        <div>
+            <a href="/assessment" class="button button-primary">Discover Your Path</a>
+            <a href="/careers" class="button button-secondary">Explore Careers</a>
+        </div>
+        <div class="hero-note">
+            <span>✦</span>
+            Built around your skills, interests, and ambitions.
+        </div>
+    </div>
+    <div class="preview-wrapper">
+        <div class="preview-card">
+            <div class="preview-top">
+                <div>
+                    <p calss="'preview-label"> YOUR JOURNEY</p>
+                    <h3>Progress Ovrview</h3>
+                </div>
+                <span class="preview-badge">PREVIEW</span>
+            </div>
+
+            <div class="progress-summary">
+                <div class="progress-ring">
+                    <div class="ring-inner">
+                        <strong>72%</strong>
+                        <span>Example</span>
+                    </div>
+                </div>
+
+                <div class="progress-info">
+                    <span class="mini-label">YOUR NEXT STEP</span>
+                    <h4>Understand your strength</h4>
+                    <p>Start the assessment to discover areas to develop.</p>
+                </div>
+            </div>
+
+            <div class="preview-divider"></div>
+            <p>YOUR JOURNEY, STEP BY STEP</p>
+
+            <div class="journey-step">
+                <span class="step-icon purple">01</span>
+                <div>
+                    <strong>Discover</strong>
+                    <p>Access your skills and interests</p>
+                </div>
+                <span class="step-arrow"></span>
+            </div>
+
+            <div class="journey-step">
+                <span class="step-icon blue">02</span>
+                <div>
+                    <strong>Choose</strong>
+                    <p>Explore paths that fit your goals</p>
+                </div>
+                <span class="step-arrow"></span>
+            </div>
+
+            <div>
+                <span class="step-icon green">03</span>
+                <div>
+                    <strong>Progress</strong>
+                    <p>Follow your personalized roadmap</p>
+                </div>
+                <span class="step-arrow"></span>
+            </div>
+
+            <p class="preview-disclaimer">
+                Illustrative preview — not real assessment data.
+            </p>
+        </div>
+    </div>
+
+</section>
+
+
+
+
+
+<section class="features-section">
+    <div class="section-heading">
+        <span class="section-eyebrow">A CLEARER WAY FORWARD</span>
+        <h2>Turn uncertainty into <span class="gradient-text">action.</span></h2>
+        <p>
+            Your goals are unique. Your preparation plan should be too.
+        </p>
+    </div>
+
+    <div class="feature-grid">
+        <article class="feature-card">
+            <div class="feature-icon purple">◎</div>
+            <span class="feature-index">01 / DISCOVER</span>
+            <h3>Understand yourself</h3>
+            <p>
+                Explore your current knowledge, interests, strengths,
+                and areas that need more practice.
+            </p>
+        </article>
+
+        <article class="feature-card">
+            <div class="feature-icon blue">⌘</div>
+            <span class="feature-index">02 / EXPLORE</span>
+            <h3>Find your direction</h3>
+            <p>
+                Compare career paths using your preferences,
+                assessment results, and practical requirements.
+            </p>
+        </article>
+
+        <article class="feature-card">
+            <div class="feature-icon green">↗</div>
+            <span class="feature-index">03 / EXECUTE</span>
+            <h3>Make progress daily</h3>
+            <p>
+                Turn a long-term ambition into manageable tasks,
+                learning resources, and trackable milestones.
+            </p>
+        </article>
+    </div>
+</section>
+
+
+
+
+
+<section class="closing-section">
+    <span class="section-eyebrow">START WHERE YOU ARE</span>
+    <h2>You don't need every answer.<br>Just your next step.</h2>
+    <p>Begin by discovering what you know and what you want to achieve.</p>
+    <a href="/assessment" class="button button-primary">
+        Start Your Journey ↗
+    </a>
+</section>
+
+{% endblock %}

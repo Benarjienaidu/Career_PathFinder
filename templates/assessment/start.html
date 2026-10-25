@@ -1,0 +1,189 @@
+
+{% extends "base.html" %}
+
+{% block title %}Discover Yourself | Career Pathfinder{% endblock %}
+
+{% block content %}
+<section class="page-container discovery-page">
+
+    <div class="page-header">
+        <p class="assessment-label">CAREER DISCOVERY · STEP 1 OF 4</p>
+        <h1>Let's Discover You</h1>
+        <p>
+            There is no perfect career for everyone. Let's understand your
+            interests, personality, priorities, and current situation first.
+        </p>
+    </div>
+
+    <div class="assessment-progress">
+        <div class="progress-track">
+            <div class="progress-fill"></div>
+        </div>
+        <p>Step 1 of 4 — Understanding you</p>
+    </div>
+
+    <form class="form-card discovery-form"
+          method="POST"
+          action="{{ url_for('assessment') }}">
+
+        <h2>01. Your background</h2>
+
+        <div class="form-group">
+            <label for="education">What is your current education level?</label>
+            <select id="education" name="education" required>
+                <option value="">Select your education</option>
+                <option value="school">School student</option>
+                <option value="diploma">Diploma</option>
+                <option value="undergraduate">Undergraduate</option>
+                <option value="graduate">Graduate</option>
+                <option value="postgraduate">Postgraduate</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="situation">Which best describes your current situation?</label>
+            <select id="situation" name="situation" required>
+                <option value="">Choose your situation</option>
+                <option value="studying">Currently studying</option>
+                <option value="working">Already working</option>
+                <option value="job_seeking">Looking for a job</option>
+                <option value="career_change">Planning a career change</option>
+                <option value="exploring">Exploring options after school or college</option>
+            </select>
+        </div>
+
+        <h2>02. Your interests</h2>
+        <p class="section-description">
+            Which area would you enjoy exploring? Choose your current preference;
+            you can discover other options later.
+        </p>
+
+        <div class="form-group">
+            <label for="interest">Which field interests you most?</label>
+            <select id="interest" name="interest" required>
+                <option value="">Choose a field</option>
+                <option value="software">Software Development</option>
+                <option value="ai_ml">AI and Machine Learning</option>
+                <option value="data">Data Science and Analytics</option>
+                <option value="hardware">Hardware and Electronics</option>
+                <option value="mechanical">Mechanical and Core Engineering</option>
+                <option value="business">Business and Management</option>
+                <option value="creative">Design and Creative Work</option>
+                <option value="research">Research and Higher Studies</option>
+                <option value="government">Government and Public Service</option>
+                <option value="healthcare">Healthcare and Life Sciences</option>
+                <option value="undecided">I'm not sure yet</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="favorite_subject">
+                Which type of subject or activity do you enjoy most?
+            </label>
+            <select id="favorite_subject" name="favorite_subject" required>
+                <option value="">Choose what you enjoy</option>
+                <option value="logical">Solving logical problems and puzzles</option>
+                <option value="technology">Building things with technology</option>
+                <option value="numbers">Working with numbers and data</option>
+                <option value="design">Designing and creating things</option>
+                <option value="people">Helping, teaching, or working with people</option>
+                <option value="business">Planning, leading, or selling ideas</option>
+                <option value="science">Understanding science and how things work</option>
+                <option value="reading">Reading, writing, and communicating</option>
+                <option value="practical">Hands-on and practical work</option>
+                <option value="unsure">I'm still figuring this out</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="work_style">How would you prefer to work?</label>
+            <select id="work_style" name="work_style" required>
+                <option value="">Choose a work style</option>
+                <option value="independent">Independently, with time to focus</option>
+                <option value="team">In a collaborative team</option>
+                <option value="people_facing">Directly with people or customers</option>
+                <option value="hands_on">Hands-on, building or operating things</option>
+                <option value="mixed">A mix of different activities</option>
+                <option value="unsure">Not sure yet</option>
+            </select>
+        </div>
+
+        <h2>03. Your priorities</h2>
+
+        <div class="form-group">
+            <label for="priority">What matters most in your future career?</label>
+            <select id="priority" name="priority" required>
+                <option value="">Choose your main priority</option>
+                <option value="income">High earning potential</option>
+                <option value="stability">Job security and stability</option>
+                <option value="flexibility">Remote work and flexibility</option>
+                <option value="impact">Helping people or society</option>
+                <option value="creativity">Creativity and freedom</option>
+                <option value="interest">Doing work I genuinely enjoy</option>
+                <option value="growth">Learning and career growth</option>
+                <option value="entrepreneurship">Building my own business</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="dislike">
+                Which kind of work would you prefer to avoid?
+            </label>
+            <select id="dislike" name="dislike" required>
+                <option value="">Choose your least preferred work</option>
+                <option value="coding">Long hours of coding</option>
+                <option value="math">Heavy mathematics and calculations</option>
+                <option value="people">Frequent customer interaction or public speaking</option>
+                <option value="physical">Physically demanding or field work</option>
+                <option value="routine">Repetitive, routine tasks</option>
+                <option value="uncertainty">Uncertain income or unstable work</option>
+                <option value="none">Open to trying different kinds of work</option>
+            </select>
+        </div>
+
+        <h2>04. Your current goal</h2>
+
+        <div class="form-group">
+            <label for="goal">What would you most like to achieve?</label>
+            <select id="goal" name="goal" required>
+                <option value="">Choose your goal</option>
+                <option value="internship">Get an internship</option>
+                <option value="job">Get a job</option>
+                <option value="higher_studies">Pursue higher studies</option>
+                <option value="entrepreneurship">Build a startup or business</option>
+                <option value="exploration">Discover suitable career options</option>
+                <option value="government_exam">Prepare for government exams</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="hours">How much time can you dedicate daily?</label>
+            <select id="hours" name="daily_hours" required>
+                <option value="">Choose available time</option>
+                <option value="1">Less than 1 hour</option>
+                <option value="2">1–2 hours</option>
+                <option value="4">3–4 hours</option>
+                <option value="6">5–6 hours</option>
+                <option value="8">More than 6 hours</option>
+            </select>
+        </div>
+
+        <div class="form-note">
+            <strong>What happens next?</strong>
+            <p>
+                Your answers will help us understand your preferences.
+                In Step 2, you'll complete practical questions to measure
+                relevant abilities. Your preferences alone won't determine
+                your career recommendation.
+            </p>
+        </div>
+
+        <button class="btn btn-primary" type="submit">
+            Save Discovery Answers & Continue
+        </button>
+
+    </form>
+</section>
+{% endblock %}
+

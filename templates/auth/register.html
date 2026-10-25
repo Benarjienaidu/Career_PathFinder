@@ -1,0 +1,46 @@
+
+{% extends "base.html" %}
+
+{% block title %}Register | Career Pathfinder{% endblock %}
+
+{% block content %}
+<section class="page-container">
+    <div class="page-header">
+        <h1>Create your account</h1>
+        <p>Start building a career path tailored to your strengths.</p>
+    </div>
+
+    {% for category, message in get_flashed_messages(with_categories=true) %}
+        <p class="form-message {{ category }}">{{ message }}</p>
+    {% endfor %}
+
+    <form class="form-card" method="POST" action="{{ url_for('register') }}">
+        <div class="form-group">
+            <label for="name">Full name</label>
+            <input id="name" name="name" type="text"
+                   autocomplete="name" maxlength="100" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input id="email" name="email" type="email"
+                   autocomplete="email" maxlength="255" required>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password"
+                   autocomplete="new-password" minlength="8" required>
+        </div>
+
+        <button class="btn btn-primary" type="submit">
+            Create Account
+        </button>
+
+        <p style="margin-top: 20px;">
+            Already registered?
+            <a href="{{ url_for('login') }}">Log in</a>
+        </p>
+    </form>
+</section>
+{% endblock %}

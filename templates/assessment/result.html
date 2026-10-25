@@ -1,0 +1,171 @@
+
+{% extends "base.html" %}
+
+{% block title %}Assessment Results | Career Pathfinder{% endblock %}
+
+{% block content %}
+<section class="page-container">
+
+    <div class="page-header">
+        <h1>Your Career Assessment Results</h1>
+        <p>Your career direction and personalized learning plan.</p>
+    </div>
+
+    <div class="form-card">
+
+        <h2>Hello, {{ user.name }}!</h2>
+
+        <p><strong>Career interest:</strong> {{ interest_name }}</p>
+        <p><strong>Main goal:</strong> {{ goal_name }}</p>
+        <p><strong>Study time:</strong>
+            {{ assessment.daily_hours }} hour(s) per day
+        </p>
+
+        <hr>
+
+        <h2>Your Skill Profile</h2>
+        <p>Python: {{ skill_labels[assessment.python_level] }}</p>
+        <p>Mathematics: {{ skill_labels[assessment.math_level] }}</p>
+        <p>Coding: {{ skill_labels[assessment.coding_level] }}</p>
+
+        <hr>
+
+        {% if analysis_error or not recommendation %}
+            <h2>Career analysis temporarily unavailable</h2>
+            <p>
+                Check that Ollama is running and the model
+                {{ "qwen3:4b" }} is installed, then try again.
+            </p>
+        {% else %}
+
+            <h2>Recommended Career Direction</h2>
+            <p>{{ recommendation.career_direction }}</p>
+
+            <h3>Your Strengths</h3>
+            <ul>
+                {% for item in recommendation.strengths %}
+                    <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+
+            <h3>Skills to Improve</h3>
+            <ul>
+                {% for item in recommendation.skills_to_improve %}
+                    <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+
+            <hr>
+
+            <h2>Your 4-Week Learning Roadmap</h2>
+            <p>Complete each week's tasks and check your milestone.</p>
+
+            {% for week in recommendation.weeks %}
+                <div class="roadmap-week">
+                    <h3>Week {{ week.week }} — {{ week.title }}</h3>
+                    <p><strong>Weekly goal:</strong> {{ week.goal }}</p>
+
+                    <div class="daily-tasks">
+                        {% for day in week.days %}
+                            <div class="daily-task">
+                                <strong>Day {{ day.day }}</strong>
+                                <p>{{ day.task }}</p>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="milestone">
+                        <strong>Week {{ week.week }} milestone:</strong>
+                        {{ week.milestone }}
+                    </div>
+                </div>
+            {% endfor %}
+
+            <hr>
+
+            <h2>Your Daily Study Schedule</h2>
+            {% for item in recommendation.daily_schedule %}
+                <div class="daily-task">
+                    <strong>{{ item.time }}</strong>
+                    <p>{{ item.activity }}</p>
+                </div>
+            {% endfor %}
+
+            <hr>
+
+            <h2>Your Beginner Project</h2>
+            <h3>{{ recommendation.project.title }}</h3>
+            <p>{{ recommendation.project.description }}</p>
+
+            <ol>
+                {% for step in recommendation.project.steps %}
+                    <li>{{ step }}</li>
+                {% endfor %}
+            </ol>
+
+            <hr>
+
+            <h2>Three Tasks to Start Today</h2>
+            <ul>
+                {% for task in recommendation.start_today %}
+                    <li>{{ task }}</li>
+                {% endfor %}
+            </ul>
+
+        {% endif %}
+
+        <hr>
+
+        <a class="btn btn-primary"
+           href="{{ url_for('assessment') }}">
+            Retake Assessment
+        </a>
+
+        <a class="btn btn-primary"
+           href="{{ url_for('roadmap') }}">
+            View Roadmap
+        </a>
+
+    </div>
+</section>
+
+<style>
+    .roadmap-week {
+        margin: 24px 0;
+        padding: 20px;
+        border: 1px solid var(--border-color, #dfe3e8);
+        border-radius: 12px;
+    }
+
+    .roadmap-week h3 {
+        margin-top: 0;
+    }
+
+    .daily-tasks {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 12px;
+        margin: 18px 0;
+    }
+
+    .daily-task {
+        padding: 14px;
+        border: 1px solid var(--border-color, #dfe3e8);
+        border-radius: 8px;
+        overflow-wrap: anywhere;
+    }
+
+    .daily-task p {
+        margin-bottom: 0;
+        line-height: 1.6;
+    }
+
+    .milestone {
+        margin-top: 16px;
+        padding: 12px;
+        border-radius: 8px;
+        background: var(--card-background, #f5f7fa);
+        line-height: 1.6;
+    }
+</style>
+{% endblock %}

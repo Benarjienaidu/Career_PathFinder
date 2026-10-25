@@ -1,0 +1,16 @@
+
+{% extends "base.html" %}
+
+{% block title %}Assessment | Career Pathfinder{% endblock %}
+
+{% block content %}
+<section class="page-container">
+    <div class="page-header">
+        <h1>Welcome, {{ user.name }}!</h1>
+
+        <p>Email: {{ user.email }}</p>
+        <p>Your career journey starts here.</p>
+    </div>
+    <p>Your assessment will be built here.</p>
+</section>
+{% endblock %}
